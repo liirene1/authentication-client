@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
+import Google from './google';
+import Facebook from './facebook';
 
 class Signin extends Component {
   handleFormSubmit({ email, password }) {
@@ -23,18 +25,23 @@ class Signin extends Component {
     const { handleSubmit, fields: { email, password }} = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <fieldset className="form-group">
-          <label> Email: </label>
-          <input {...email} type="email" className="form-control" />
-        </fieldset>
-        <fieldset className="form-group">
-          <label> Password: </label>
-          <input {...password} type="password" className="form-control" />
-        </fieldset>
-        {this.renderAlert()}
-        <button action="submit" className="btn btn-primary">Sign In</button>
-      </form>
+      <div>
+        <Google />
+        <Facebook />
+
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <fieldset className="form-group">
+            <label> Email: </label>
+            <input {...email} type="email" className="form-control" />
+          </fieldset>
+          <fieldset className="form-group">
+            <label> Password: </label>
+            <input {...password} type="password" className="form-control" />
+          </fieldset>
+          {this.renderAlert()}
+          <button action="submit" className="btn btn-primary">Sign In</button>
+        </form>
+      </div>
     );
   }
 }
